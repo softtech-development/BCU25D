@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="site.css" />
+    <script src="app.js" defer></script>
+    <title>Dynamic HTML</title>
+  </head>
+  <body>
+    <header>
+      <h1>Dynamic HTML</h1>
+      <img src="./images/html.png" alt="html logo" />
+      <span>+</span>
+      <img src="./images/js.png" alt="javascript logo" />
+    </header>
+    <div class="container">
+      <div class="card">
+        <h1 id="app-title" class="title">Inköps Lista</h1>
+
+        <form id="item-form">
+          <input
+            type="text"
+            id="item-input"
+            name="item"
+            placeholder="Ange vara" />
+
+          <button type="submit" class="btn">
+            <ion-icon name="add-circle-outline"></ion-icon> Lägg till
+          </button>
+        </form>
+
+        <div class="filter">
+          <input
+            type="text"
+            class="form-input-filter"
+            id="filter"
+            placeholder="Sök" />
+        </div>
+
+        <ul id="item-list" class="items"></ul>
+
+        <button id="clear" class="btn btn-clear">
+          <ion-icon name="trash-outline"></ion-icon>
+          Töm allt
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
