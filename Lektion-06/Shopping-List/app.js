@@ -13,18 +13,8 @@ modalDialog
 let isInEditMode = false;
 
 const initApp = () => {
-  const items = localStorage.getItem('groceries');
-  // Vi måste vara defensiva. Kontroller så att vi fick något tillbaka...
-  if (items !== null) {
-    // Om vi har lagra varor läs in det som en array av strängar...
-    const groceries = JSON.parse(items);
-
-    // Loopa igenom alla element(varor) i listan och skapa html element för respektive vara...
-    groceries.forEach((grocery) => {
-      const li = createHtml(grocery);
-      groceryList.appendChild(li);
-    });
-  }
+  const groceries = getFromStorage('groceries');
+  groceries.forEach((grocery) => groceryList.appendChild(createHtml(grocery)));
 };
 
 const handleAddGrocery = (e) => {
@@ -52,10 +42,7 @@ const handleAddGrocery = (e) => {
       isInEditMode = false;
     }
 
-    // Kontrollera så att vi inte försöker skapa dubbletter...
     if (groceryList.querySelector('li') !== null) {
-      /* const list = groceryList.querySelectorAll('li');
-      const listOfGroceries = Array.from(list); */
       const groceries = Array.from(groceryList.querySelectorAll('li'));
 
       if (
@@ -64,11 +51,6 @@ const handleAddGrocery = (e) => {
             item.innerText.toLowerCase() === groceryInput.value.toLowerCase(),
         )
       ) {
-        // Vad gör vi om det redan finns en vara i listan?
-        // 1. Sätt korrekt text i meddelande elementet i dialogrutan...
-        // 2. Visa dialogrutan...
-        // 3. Sätt inmatningsfältet (Ange vara) till en tom sträng
-        // 4. Avbryta exekvering av applikationen.
         modalDialog.querySelector('#message').innerHTML =
           `<h1><i>${groceryInput.value} finns redan i listan.</i></h1>`;
         modalDialog.showModal();
@@ -84,19 +66,7 @@ const handleAddGrocery = (e) => {
     saveButton.classList.remove('btn-edit');
     saveButton.classList.add('btn');
 
-    // Lagra varan till localStorage...
-    // // Vi börjar väldigt enkelt...
-    // localStorage.setItem('groceries', groceryInput.value);
-    // Nu gör vi det på korrekt sätt...
-    let items = localStorage.getItem('groceries');
-    if (items === null) {
-      items = [];
-    } else {
-      items = JSON.parse(localStorage.getItem('groceries'));
-    }
-    items.push(groceryInput.value);
-    // Skriv information till localStorage...
-    localStorage.setItem('groceries', JSON.stringify(items));
+    addToStorage(groceryInput.value, 'groceries');
     groceryInput.value = '';
   }
 };
@@ -105,29 +75,17 @@ const clearGroceryList = () => {
   while (groceryList.firstChild) {
     groceryList.removeChild(groceryList.firstChild);
   }
-
-  // Töm/radera localStorage, tar nyckeln(key)
-  localStorage.removeItem('groceries');
+  clearStorage('groceries');
 };
 
 const handleClickGroceryItem = (e) => {
   if (e.target.parentElement.classList.contains('btn-delete')) {
     e.target.parentElement.parentElement.remove();
 
-    // Hämta ut listan groceries ifrån localStorage...
-    let items = localStorage.getItem('groceries');
-    // Kontrollera om vi hade något i localStorage...
-    if (items !== null) {
-      items = JSON.parse(items);
-      console.log('Ursprunglig lista', items);
-      // Placka bara ut de elementen som vi vill ha kvar...
-      let groceries = items.filter(
-        (item) => item !== e.target.parentElement.parentElement.innerText,
-      );
-      console.log('Nya filtrerade listan', groceries);
-
-      localStorage.setItem('groceries', JSON.stringify(groceries));
-    }
+    removeFromStorage(
+      e.target.parentElement.parentElement.innerText,
+      'groceries',
+    );
   } else {
     isInEditMode = true;
 
@@ -137,7 +95,6 @@ const handleClickGroceryItem = (e) => {
 
     groceryInput.value = e.target.textContent;
 
-    // Markera vilket LI som ska förändras...
     e.target.classList.add('edit-mode');
 
     saveButton.classList.add('btn-edit');
@@ -147,17 +104,10 @@ const handleClickGroceryItem = (e) => {
 };
 
 const handleFilterGroceries = (e) => {
-  // 1. Vi måste hämta alla li elementen i vår lista...
   const groceries = document.querySelectorAll('li');
-  // 2. Vi måste hämta in vad som skrivs i filterinput...
   const filterValue = e.target.value.toLowerCase();
-  // 3. Loopa igenom groceries
   groceries.forEach((item) => {
     const itemName = item.firstChild.textContent.toLowerCase();
-
-    // itemName.indexOf(filterValue) != -1
-    //   ? (item.style.display = 'flex')
-    //   : (item.style.display = 'none');
 
     if (itemName.indexOf(filterValue) != -1) {
       item.style.display = 'flex';
