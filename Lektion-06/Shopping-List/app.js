@@ -99,6 +99,13 @@ const handleAddGrocery = (e) => {
       const groceryToUpdate = groceryList.querySelector('.edit-mode');
       groceryToUpdate.classList.remove('.edit-mode');
       groceryToUpdate.remove();
+
+      // Uppdatera localStorage...
+      let items = localStorage.getItem('groceries');
+      items = JSON.parse(items);
+      items = items.filter((item) => item !== groceryToUpdate.innerText);
+      localStorage.setItem('groceries', JSON.stringify(items));
+
       isInEditMode = false;
     }
 
