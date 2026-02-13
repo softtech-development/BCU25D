@@ -10,3 +10,12 @@ Vi ska även se till att vi har felhantering i applikationen.
 
 Dessutom ska vi slutligen titta på hur vi kan förbättra koden i vår applikation
 det som kallas för _refactoring_
+
+## Övning inför nästa lektion
+
+1.      Fixa till sista localStorage logiken som finns i app.js
+2.      Visa Töm allt endast om det finns något i listan.
+3.      Fixa buggen som inträffar när vi klickar på en tom lista.
+4.      Bonus
+    Om ni tar bort manuellt ifrån listan och det inte finns fler
+    varor så ska ni ta bort localStoragen nyckeln..
