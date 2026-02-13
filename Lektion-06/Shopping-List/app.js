@@ -180,6 +180,21 @@ const clearGroceryList = () => {
 const handleClickGroceryItem = (e) => {
   if (e.target.parentElement.classList.contains('btn-delete')) {
     e.target.parentElement.parentElement.remove();
+
+    // Hämta ut listan groceries ifrån localStorage...
+    let items = localStorage.getItem('groceries');
+    // Kontrollera om vi hade något i localStorage...
+    if (items !== null) {
+      items = JSON.parse(items);
+      console.log('Ursprunglig lista', items);
+      // Placka bara ut de elementen som vi vill ha kvar...
+      let groceries = items.filter(
+        (item) => item !== e.target.parentElement.parentElement.innerText,
+      );
+      console.log('Nya filtrerade listan', groceries);
+
+      localStorage.setItem('groceries', JSON.stringify(groceries));
+    }
   } else {
     isInEditMode = true;
 
