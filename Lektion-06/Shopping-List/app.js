@@ -15,6 +15,7 @@ let isInEditMode = false;
 const initApp = () => {
   const groceries = getFromStorage('groceries');
   groceries.forEach((grocery) => groceryList.appendChild(createHtml(grocery)));
+  updateUI();
 };
 
 const handleAddGrocery = (e) => {
@@ -33,11 +34,7 @@ const handleAddGrocery = (e) => {
       groceryToUpdate.classList.remove('.edit-mode');
       groceryToUpdate.remove();
 
-      // Uppdatera localStorage...
-      let items = localStorage.getItem('groceries');
-      items = JSON.parse(items);
-      items = items.filter((item) => item !== groceryToUpdate.innerText);
-      localStorage.setItem('groceries', JSON.stringify(items));
+      removeFromStorage(groceryToUpdate.innerText, 'groceries');
 
       isInEditMode = false;
     }
@@ -54,7 +51,7 @@ const handleAddGrocery = (e) => {
         modalDialog.querySelector('#message').innerHTML =
           `<h1><i>${groceryInput.value} finns redan i listan.</i></h1>`;
         modalDialog.showModal();
-        groceryInput.value = '';
+        updateUI();
         return;
       }
     }
@@ -67,7 +64,7 @@ const handleAddGrocery = (e) => {
     saveButton.classList.add('btn');
 
     addToStorage(groceryInput.value, 'groceries');
-    groceryInput.value = '';
+    updateUI();
   }
 };
 
@@ -76,9 +73,14 @@ const clearGroceryList = () => {
     groceryList.removeChild(groceryList.firstChild);
   }
   clearStorage('groceries');
+  updateUI();
 };
 
 const handleClickGroceryItem = (e) => {
+  if (groceryList.children.length === 0) {
+    return;
+  }
+
   if (e.target.parentElement.classList.contains('btn-delete')) {
     e.target.parentElement.parentElement.remove();
 
@@ -86,6 +88,11 @@ const handleClickGroceryItem = (e) => {
       e.target.parentElement.parentElement.innerText,
       'groceries',
     );
+
+    if (groceryList.children.length === 0) {
+      clearStorage('groceries');
+      updateUI();
+    }
   } else {
     isInEditMode = true;
 
@@ -115,6 +122,13 @@ const handleFilterGroceries = (e) => {
       item.style.display = 'none';
     }
   });
+};
+
+const updateUI = () => {
+  groceryInput.value = '';
+  groceryList.children.length === 0
+    ? (clearButton.style.display = 'none')
+    : (clearButton.style.display = 'block');
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
