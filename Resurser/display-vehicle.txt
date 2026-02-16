@@ -1,0 +1,25 @@
+<a class="goback" href="../gallery/gallery.html">
+    <i class="fa-regular fa-arrow-left-long"></i>Tillbaka till
+galleriet</a>
+<section class="card">
+  <img src="bildkälla"/>
+  <div class="info">
+    <h2>Bilinfo</h2>
+    <div>
+      <span>Pris</span>
+      <span>Bilens pris</span>
+    </div>
+    <div>
+      <span>Årsmodell</span>
+      <span>Bilens årsmodell</span>
+    </div>
+    <div>
+      <span>Antal km</span>
+      <span>Antal körda km</span>
+    </div>
+    <h3>Beskrivning</h3>
+    <div class="description">
+      Bilens beskrivning
+    </div>
+  </div>
+</section>
