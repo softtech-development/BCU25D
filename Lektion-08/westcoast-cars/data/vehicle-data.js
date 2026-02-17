@@ -130,3 +130,10 @@ const vehicles = [
       'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
   },
 ];
+
+export const getVehicle = (id) => {
+  const vehicle = vehicles.find((vehicle) => vehicle.id === +id);
+  return vehicle;
+};
+
+export default vehicles;

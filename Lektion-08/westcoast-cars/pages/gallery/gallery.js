@@ -1,11 +1,20 @@
+import vehicles from '../../data/vehicle-data.js';
+import {
+  createCard,
+  createImage,
+  createSpan,
+  addImageNavigateClickHandler,
+} from '../../scripts/dom.js';
+
 const gallery = document.querySelector('#vehicles-gallery');
 
 const initApp = () => {
-  loadVehicles();
+  const vehicles = loadVehicles();
+  displayVehicles(vehicles);
 };
 
 const loadVehicles = () => {
-  displayVehicles(vehicles);
+  return vehicles;
 };
 
 const displayVehicles = (vehicles) => {
@@ -23,35 +32,6 @@ const displayVehicles = (vehicles) => {
 
     const images = document.querySelectorAll('.card img');
     addImageNavigateClickHandler(images, '../vehicle/vehicle-details.html');
-  });
-};
-
-const createCard = () => {
-  const card = document.createElement('section');
-  card.classList.add('card');
-  return card;
-};
-
-const createImage = (imageUrl, id) => {
-  const image = document.createElement('img');
-  image.setAttribute('src', imageUrl);
-  image.setAttribute('id', id);
-  return image;
-};
-
-const createSpan = (text, className) => {
-  const span = document.createElement('span');
-  span.textContent = text;
-  span.classList.add(className);
-  return span;
-};
-
-const addImageNavigateClickHandler = (images, url) => {
-  images.forEach((image) => {
-    const id = image.getAttribute('id');
-    image.addEventListener('click', () => {
-      location.href = url + '?id=' + id;
-    });
   });
 };
 

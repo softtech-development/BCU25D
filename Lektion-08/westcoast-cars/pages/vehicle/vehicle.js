@@ -1,24 +1,26 @@
+import { getVehicle } from '../../data/vehicle-data.js';
+import { createHeader } from '../../scripts/dom.js';
+
 const detailsArea = document.querySelector('#details-area');
-const pageTitle = document.querySelector('#page-title');
+const main = document.querySelector('main');
+// const pageTitle = document.querySelector('#page-title');
 
 const initApp = () => {
-  // http://127.0.0.1:5500/pages/vehicle/vehicle-details.html?id=1
   const vehicleId = location.search.split('=')[1];
-  console.log(vehicleId);
-  getVehicle(vehicleId);
-};
+  const vehicle = getVehicle(vehicleId);
+  const header = createHeader(
+    `${vehicle.manufacturer} ${vehicle.model}`,
+    'h1',
+    'page-title center-text mt-3',
+  );
 
-const getVehicle = (id) => {
-  const vehicle = vehicles.find((vehicle) => vehicle.id === +id);
-  pageTitle.innerText = `${vehicle.manufacturer} ${vehicle.model}`;
-  // pageTitle.innerText = vehicle.manufacturer + ' ' + vehicle.model;
-  // const vehicle = vehicles.find((vehicle) => vehicle.id === Number(id));
-  const vehicleInfo = createDisplayVehicle(vehicle);
-
-  detailsArea.innerHTML = vehicleInfo;
+  main.appendChild(header);
+  detailsArea.innerHTML = createDisplayVehicle(vehicle);
 };
 
 const createDisplayVehicle = (vehicle) => {
+  // pageTitle.innerText = `${vehicle.manufacturer} ${vehicle.model}`;
+
   const html = `
     <a class="goback" href="../gallery/gallery.html">
       <i class="fa-regular fa-arrow-left-long"></i>Tillbaka till
