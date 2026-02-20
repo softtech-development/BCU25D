@@ -48,5 +48,16 @@ describe('Vehicle data', () => {
       // Assert
       expect(vehicle).not.toBeNull();
     });
+
+    it('should return a Chevrolet Corvette with id = 1', () => {
+      // Arrange
+      // Act
+      const vehicle = getVehicle(1);
+
+      // Assert
+      expect(vehicle).not.toBeNull();
+      expect(vehicle.manufacturer).toBe('Chevrolet');
+      expect(vehicle.model).toBe('Corvette');
+    });
   });
 });
