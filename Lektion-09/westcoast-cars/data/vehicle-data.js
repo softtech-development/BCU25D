@@ -133,7 +133,9 @@ const vehicles = [
 
 export const getVehicle = (id) => {
   const vehicle = vehicles.find((vehicle) => vehicle.id === +id);
-  return vehicle;
+  return vehicle === undefined ? null : vehicle;
 };
 
-export default vehicles;
+export const listAllVehicles = () => {
+  return vehicles;
+};

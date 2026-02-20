@@ -1,4 +1,4 @@
-import vehicles from '../../data/vehicle-data.js';
+import { listAllVehicles } from '../../data/vehicle-data.js';
 import {
   createCard,
   createImage,
@@ -14,7 +14,7 @@ const initApp = () => {
 };
 
 const loadVehicles = () => {
-  return vehicles;
+  return listAllVehicles();
 };
 
 const displayVehicles = (vehicles) => {
