@@ -18,7 +18,7 @@ const initApp = () => {
   createDisplayVehicle(vehicle);
 };
 
-const createDisplayVehicle = (vehicle) => {
+export const createDisplayVehicle = (vehicle) => {
   document.querySelector('#details-area').innerHTML = `
     <a class="goback" href="../gallery/gallery.html">
       <i class="fa-regular fa-arrow-left-long"></i>Tillbaka till
