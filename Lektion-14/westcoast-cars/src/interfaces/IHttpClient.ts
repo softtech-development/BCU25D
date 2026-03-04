@@ -1,6 +1,6 @@
-import { Vehicle } from '../models/vehicle';
 
-export interface IHttpClient {
-    listAllVehicles(): Promise<Vehicle[] | Vehicle>;
-    findVehicle(id: number): Promise<Vehicle[] | Vehicle>;
+export interface IHttpClient<T> {
+    listAll(): Promise<T>;
+    find(id: number): Promise<T>;
+    add(data: T): Promise<T>;
 }

@@ -10,9 +10,8 @@ const handleSubmit = async (e: SubmitEvent) => {
   const formData = new FormData(form!);
 
   const data = Object.fromEntries(formData.entries()) as Post;
-  console.log(JSON.stringify(data));
-  // Lagra meddelandet i vår json fil(vehicles.json)
-  const http = await new HttpClient("posts").addPost(data);
+  const result = await new HttpClient<Post>("posts").add(data);
+  console.log(result);
 };
 
 document.addEventListener('DOMContentLoaded', initApp);

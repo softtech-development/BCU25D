@@ -1,47 +1,51 @@
 import { IHttpClient } from '../interfaces/IHttpClient';
-import { Post } from '../models/post';
-import { Vehicle } from '../models/vehicle';
-
-export default class HttpClient implements IHttpClient {
-  private baseUrl: string = 'http://localhost:3000';
+export default class HttpClient<T> implements IHttpClient<T> {
+  // Private field...
+  private _url: string;
 
   constructor (resource: string) {
-    this.baseUrl = `${this.baseUrl}/${resource}`;
+    this._url = "http://localhost:3000/" + resource;
   }
 
-  async listAllVehicles(): Promise<Vehicle[] | Vehicle> {
-    return await this.getData(this.baseUrl);
+  async add(data: T) {
+    return await this.save(data);
   }
 
-  async findVehicle(id: number): Promise<Vehicle[] | Vehicle> {
-    return await this.getData(`${this.baseUrl}/${id}`);
+  async find(id: number): Promise<T> {
+    return await this.getData(`${this._url}/${id}`);
   }
 
-  async addPost(post: Post) {
-    const response = await fetch(this.baseUrl, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(post)
-    });
-
-    if (response.ok) {
-      console.log("Tack för din förfrågan");
-    }
+  async listAll(): Promise<T> {
+    return await this.getData(this._url);
   }
 
-  private async getData(url: string): Promise<Vehicle[] | Vehicle> {
+  private async getData(url: string): Promise<T> {
     try {
       const response = await fetch(url);
 
       if (response.ok) {
-        return await response.json();
+        return await response.json() as T;
       } else {
         throw new Error(`${response.status} ${response.statusText}`);
       }
     } catch (error) {
       throw error;
+    }
+  }
+
+  private async save(data: T): Promise<T> {
+    const response = await fetch(this._url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      return await response.json() as T;
+    } else {
+      throw new Error(response.statusText);
     }
   }
 }

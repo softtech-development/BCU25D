@@ -7,31 +7,35 @@ const initApp = async () => {
   try {
     const vehicleId = location.search.split('=')[1];
     const vehicle = await loadVehicle(+vehicleId);
-    createPageHeader(vehicle!);
-    createDisplayVehicle(vehicle!);
+
+    vehicle && createPageHeader(vehicle);
+    vehicle && createDisplayVehicle(vehicle);
   } catch (error) {
     createPageHeader("Hittade inget");
   }
 };
 
 const loadVehicle = async (id: number): Promise<Vehicle | null> => {
-  return await new HttpClient('vehicles').findVehicle(+id) as Vehicle;
+  return await new HttpClient<Vehicle>('vehicles').find(+id);
 };
 
-const createPageHeader = (vehicle: Vehicle | string) => {
+const createPageHeader = (data: Vehicle | string) => {
   const pageHeader: HTMLElement | null = document.querySelector("main");
 
-  if (!pageHeader) return;
+  pageHeader && (typeof data === "string"
+    ? pageHeader.prepend(createHeader(data, HeadingEnums.H1, 'page-title center-text mt-3'))
+    : pageHeader.prepend(createHeader(`${data.manufacturer} ${data.model}`, HeadingEnums.H1, 'page-title center-text mt-3')));
 
-  if (typeof vehicle === "string") {
-    pageHeader?.prepend(createHeader(vehicle, HeadingEnums.H1, 'page-title center-text mt-3'));
-  } else {
-    pageHeader.prepend(createHeader(
-      `${vehicle.manufacturer} ${vehicle.model}`,
-      HeadingEnums.H1,
-      'page-title center-text mt-3',
-    ),);
-  }
+
+  // if (typeof vehicle === "string") {
+  //   pageHeader!.prepend(createHeader(vehicle, HeadingEnums.H1, 'page-title center-text mt-3'));
+  // } else {
+  //   pageHeader!.prepend(createHeader(
+  //     `${vehicle.manufacturer} ${vehicle.model}`,
+  //     HeadingEnums.H1,
+  //     'page-title center-text mt-3',
+  //   ),);
+  // }
 };
 
 

@@ -12,7 +12,7 @@ const gallery = document.querySelector('#vehicles-gallery');
 
 const initApp = async () => {
   try {
-    displayVehicles(await new HttpClient('vehicles').listAllVehicles() as Vehicle[]);
+    displayVehicles(await new HttpClient<Vehicle[]>('vehicles').listAll());
   } catch (error) {
     console.error(error);
   }

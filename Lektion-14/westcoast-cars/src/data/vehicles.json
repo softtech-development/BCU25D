@@ -118,6 +118,34 @@
       "email": "michael.gustavsson@softtech-dev.se",
       "message": "TESTAR!",
       "id": 1
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Gustavsson",
+      "email": "michael.gustavsson@skaftoskorpan.se",
+      "message": "Hej",
+      "id": 2
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Gustavsson",
+      "email": "michael.gustavsson@skaftoskorpan.se",
+      "message": "TEST",
+      "id": 3
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Gustavsson",
+      "email": "michael.gustavsson@softtech-dev.se",
+      "message": "Testar igen!!!",
+      "id": 4
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "Gustavsson",
+      "email": "michael.gustavsson@softtech-dev.se",
+      "message": "Hej igen!?!?!",
+      "id": 5
     }
   ]
 }
