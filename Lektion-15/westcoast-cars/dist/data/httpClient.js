@@ -1,8 +1,9 @@
+import { settings } from '../config/env.js';
 export default class HttpClient {
     // Private field...
     _url;
     constructor(resource) {
-        this._url = "http://localhost:3000/" + resource;
+        this._url = settings.BASE_URL + resource;
     }
     async add(data) {
         return await this.save(data);
@@ -15,9 +16,35 @@ export default class HttpClient {
     }
     async getData(url) {
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "content-type": "application/json",
+                    "x-apikey": settings.API_KEY,
+                    "cache-control": "no-cache"
+                }
+            });
             if (response.ok) {
-                return await response.json();
+                const result = await response.json();
+                let data;
+                if (Array.isArray(result)) {
+                    data = result.map(vehicle => {
+                        return {
+                            ...vehicle,
+                            id: vehicle._id
+                        };
+                    });
+                    // Iterera igenom vår nya data struktur och ta bort _id.
+                    data.map(v => {
+                        delete v._id;
+                        return v;
+                    });
+                }
+                else {
+                    data = { ...result, id: result._id };
+                    delete data._id;
+                }
+                return data;
             }
             else {
                 throw new Error(`${response.status} ${response.statusText}`);

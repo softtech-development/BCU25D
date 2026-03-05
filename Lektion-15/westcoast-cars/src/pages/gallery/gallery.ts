@@ -9,9 +9,11 @@ import {
 import { Vehicle } from '../../models/vehicle.js';
 
 const gallery = document.querySelector('#vehicles-gallery');
+const spinner = document.querySelector("#spinner");
 
 const initApp = async () => {
   try {
+    spinner && spinner.classList.add("loader");
     displayVehicles(await new HttpClient<Vehicle[]>('vehicles').listAll());
   } catch (error) {
     console.error(error);
@@ -21,7 +23,7 @@ const initApp = async () => {
 const displayVehicles = (vehicles: Vehicle[]) => {
   vehicles.map((vehicle: Vehicle) => {
     const card: HTMLElement = createCard();
-    const image: HTMLImageElement = createImage(vehicle.imageUrl, vehicle.id.toString());
+    const image: HTMLImageElement = createImage(vehicle.imageUrl, vehicle.id);
     const info: HTMLSpanElement = createSpan(
       `${vehicle.manufacturer} ${vehicle.model}`,
       'image-info',
@@ -37,6 +39,7 @@ const displayVehicles = (vehicles: Vehicle[]) => {
       addImageNavigateClickHandler(images, '../vehicle/vehicle-details.html');
     }
   });
+  spinner && spinner.classList.remove("loader");
 };
 
 document.addEventListener('DOMContentLoaded', initApp);

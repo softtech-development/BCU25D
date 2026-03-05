@@ -6,7 +6,6 @@ const handleSubmit = async (e) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     const result = await new HttpClient("posts").add(data);
-    console.log(result);
 };
 document.addEventListener('DOMContentLoaded', initApp);
 form.addEventListener('submit', handleSubmit);

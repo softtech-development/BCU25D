@@ -6,7 +6,7 @@ export const createCard = () => {
 export const createImage = (imageUrl, id) => {
     const image = document.createElement('img');
     image.setAttribute('src', imageUrl);
-    image.setAttribute('id', id);
+    image.setAttribute('id', id.toString());
     return image;
 };
 export const createSpan = (text, className) => {

@@ -7,10 +7,10 @@ export const createCard = (): HTMLElement => {
   return card;
 };
 
-export const createImage = (imageUrl: string, id: string): HTMLImageElement => {
+export const createImage = (imageUrl: string, id: string | number): HTMLImageElement => {
   const image = document.createElement('img');
   image.setAttribute('src', imageUrl);
-  image.setAttribute('id', id);
+  image.setAttribute('id', id.toString());
   return image;
 };
 

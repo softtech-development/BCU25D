@@ -11,7 +11,6 @@ const handleSubmit = async (e: SubmitEvent) => {
 
   const data = Object.fromEntries(formData.entries()) as Post;
   const result = await new HttpClient<Post>("posts").add(data);
-  console.log(result);
 };
 
 document.addEventListener('DOMContentLoaded', initApp);
