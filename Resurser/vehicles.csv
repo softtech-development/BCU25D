@@ -1,0 +1,11 @@
+registrationNumber,manufacturer,model,modelYear,imageUrl,mileage,value,description
+ABC123,Chevrolet,Corvette,2015,https://res.cloudinary.com/softtech-dev/image/upload/v1771144614/jersnav-corvette-7100524_lnd9au.jpg,125000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+DEF345,Ford,Mustang,2017,https://res.cloudinary.com/softtech-dev/image/upload/v1744229052/car2_ljnqt8.jpg,48500,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+GHI678,Porsche,Alpine,1967,https://res.cloudinary.com/softtech-dev/image/upload/v1769077570/car3_mbq58x.jpg,89000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+JKL901,Mercedes,S500,2019,https://res.cloudinary.com/softtech-dev/image/upload/v1769077612/car4_yv1ppv.jpg,101000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+MNO902,Mercedes,AMG,2014,https://res.cloudinary.com/softtech-dev/image/upload/v1769077641/car5_biptbu.jpg,178000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+PGQ123,Audi,A6,2013,https://res.cloudinary.com/softtech-dev/image/upload/v1769077642/car6_gtfmde.jpg,197500,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+RST456,Volvo,V60,2016,https://res.cloudinary.com/softtech-dev/image/upload/v1771144785/carlos4916-volvo-2396040_quak0b.jpg,236500,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+EGH956,Chevrolet,Impala,1958,https://res.cloudinary.com/softtech-dev/image/upload/v1769077682/car13_stwdx6.jpg,348000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+CEZ420,Lambourghini,Aventador,2013,https://res.cloudinary.com/softtech-dev/image/upload/v1769077662/car12_dq3tdj.jpg,650000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+BCA103,Ferrari,458,2013,https://res.cloudinary.com/softtech-dev/image/upload/v1769077664/car11_g41x0a.jpg,450000,175000,Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
