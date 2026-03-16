@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./register-vehicle.css" />
+    <script
+      type="module"
+      src="../../../dist/pages/valuation/register-vehicle.js"
+      defer></script>
+    <script
+      src="https://kit.fontawesome.com/55174c58a9.js"
+      crossorigin="anonymous"></script>
+    <title>Sälj din bil</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+          <ul class="menu">
+            <li class="logo">
+              <a class="sub-title" href="../../../index.html"
+                ><span><i class="fa-solid fa-cars"></i></span> Westcoast Cars</a
+              >
+            </li>
+            <li class="toggle">
+              <input class="menu-btn" type="checkbox" id="menu-btn" />
+              <label class="menu-icon" for="menu-btn"
+                ><span class="nav-icon"></span>
+              </label>
+            </li>
+            <li class="menu-item">
+              <a href="../../../index.html">Start</a>
+            </li>
+            <li class="menu-item">
+              <a class="active" href="../gallery/gallery.html">Våra bilar</a>
+            </li>
+            <li class="menu-item"><a href="../about/about.html">Om Oss</a></li>
+            <li class="menu-item">
+              <a href="../contact/contact.html">Kontakta Oss</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1 class="page-title center mt-3 mb-3 center-text">Sälj din bil</h1>
+      <section class="header">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+          aspernatur aut impedit laudantium error, quod dolor porro dolore
+          nostrum ipsam neque adipisci officiis asperiores maxime quia, qui
+          illum illo, cumque cupiditate voluptate totam alias ab dolorem.
+          Cupiditate vitae reprehenderit, nam ratione, blanditiis deleniti id
+          laudantium voluptatum, corrupti nihil optio natus.
+        </p>
+      </section>
+      <section class="form">
+        <form>
+          <div class="separator">Kontakt information</div>
+          <div class="form-control">
+            <label for="firstName">Förnamn</label>
+            <input type="text" name="firstName" id="firstName" />
+          </div>
+          <div class="form-control">
+            <label for="lastName">Efternamn</label>
+            <input type="text" name="lastName" id="lastName" />
+          </div>
+          <div class="form-control">
+            <label for="email">E-Post</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div class="form-control">
+            <label for="phone">Telefon</label>
+            <input type="text" name="phone" id="phone" />
+          </div>
+          <div class="separator">Information om fordonet</div>
+          <div class="form-control">
+            <label for="registrationNumber">Registreringsnummer</label>
+            <input
+              type="text"
+              name="registrationNumber"
+              id="registrationNumber" />
+          </div>
+          <div class="form-control">
+            <label for="manufacturer">Bilmärke</label>
+            <input type="text" name="manufacturer" id="manufacturer" />
+          </div>
+          <div class="form-control">
+            <label for="model">Modell</label>
+            <input type="text" name="model" id="model" />
+          </div>
+          <div class="form-control">
+            <label for="modelYear">Årsmodell</label>
+            <input type="number" name="modelYear" id="modelYear" />
+          </div>
+          <div class="form-control">
+            <label for="mileage">Antal körda km</label>
+            <input type="number" name="mileage" id="mileage" />
+          </div>
+          <div class="form-control">
+            <label for="description">Beskrivning av bilens skick</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"></textarea>
+          </div>
+          <button class="btn" type="submit">Skicka</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

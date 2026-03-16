@@ -1,12 +1,16 @@
 import { IHttpClient } from '../interfaces/IHttpClient';
 import { settings } from '../config/env.js';
-import { VehicleResponseType } from './responseTypes.js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 export default class HttpClient<T> implements IHttpClient<T> {
   private _url: string;
+  private _db: SupabaseClient;
+  private _table: string;
 
   constructor (resource: string) {
-    this._url = settings.BASE_URL + resource;
+    this._db = createClient(settings.BASE_URL, settings.API_KEY);
+    console.log(this._db);
+    this._table = resource;
   }
 
   async delete(id: string | number): Promise<void> {
@@ -26,47 +30,18 @@ export default class HttpClient<T> implements IHttpClient<T> {
   }
 
   async listAll(): Promise<T> {
-    return await this.getData(this._url);
+    return await this.getData();
   }
 
-  private async getData(url: string): Promise<T> {
-    try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          "x-apikey": settings.API_KEY,
-          "cache-control": "no-cache"
-        }
-      });
+  private async getData(): Promise<T> {
+    const { data, error } = await this._db
+      .from(this._table)
+      .select();
 
-      if (response.ok) {
-        const result = await response.json() as VehicleResponseType[] | VehicleResponseType;
-        let data;
-
-        if (Array.isArray(result)) {
-          data = result.map(vehicle => {
-            return {
-              ...vehicle,
-              id: vehicle._id
-            };
-          });
-
-          // Iterera igenom vår nya data struktur och ta bort _id.
-          data.map(v => {
-            delete v._id;
-            return v;
-          });
-        } else {
-          data = { ...result, id: result._id };
-          delete data._id;
-        }
-        return data as T;
-      } else {
-        throw new Error(`${response.status} ${response.statusText}`);
-      }
-    } catch (error) {
-      throw error;
+    if (error) {
+      throw new Error(error.message);
+    } else {
+      return data as T;
     }
   }
 
