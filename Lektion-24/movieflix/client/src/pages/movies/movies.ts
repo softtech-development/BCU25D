@@ -13,24 +13,35 @@ const initApp = async () => {
 const displayMovies = (movies: Media[]) => {
     movies.map((movie: Media) => {
         const dom = new CreateDOM();
-        const image = dom.create('img') as HTMLImageElement;
-        const imageAnchor = (dom.create("a") as HTMLAnchorElement);
-        const card = app.appendChild(dom.create("div", undefined, "card"));
-        const cardBody = card.appendChild(dom.create("div", undefined, "card-body"));
-        const heading = dom.create("h5", movie.title, "card-title");
-        const p = dom.create("p", undefined, "card-text text-muted");
-        const small = dom.create("small", `Premiär datum: ${movie.releaseDate}`);
+        const card = dom.create({ type: "div", classes: "card" });
+        card.innerHTML = `
+            <a href="./movie-details.html?id=${movie.id}"
+              ><img src="${movie.poster}" alt="${movie.title}"
+            /></a>
+            <div class="card-body">
+              <h5 class="card-title">${movie.title}</h5>
+              <p class="card-text text-muted">
+                <small>Premiär datum: ${movie.releaseDate}</small>
+              </p>
+            </div>
+        `;
 
-        image.src = movie.poster;
-        imageAnchor.href = './movie-details.html?id=' + movie.id;
-
-        // Knyt ihop de olika elmenten till dess respektive förälder element...
-        card.appendChild(imageAnchor);
-        imageAnchor.appendChild(image);
-        cardBody.appendChild(heading);
-        cardBody.appendChild(p);
-        p.appendChild(small);
+        app.appendChild(card);
     });
+    // Hardcore javascript...😁🤯
+    // movies.map((movie: Media) => {
+    //     const dom = new CreateDOM();
+    //     // Skapa card div
+    //     app.appendChild(dom.create({ type: "div", classes: "card" }))
+    //         // Skapa ankare för att navigera
+    //         .appendChild(dom.create({ type: "a", attribute: {name: "href", value: `./movie-details.html?id=${movie.id}`}}))
+    //         // Skapa bilden som ska synas
+    //         .appendChild(dom.create({ type: "img", attribute: { name: "src", value: movie.poster } }))
+    //         .parentElement!.parentElement!.appendChild(dom.create({ type: "div", classes: "card-body" }))
+    //         .appendChild(dom.create({ type: "h5", content: movie.title, classes: "card-title" }))
+    //         .parentElement!.appendChild(dom.create({ type: "p", classes: "card-text text-muted" }))
+    //         .appendChild(dom.create({ type: "small", content: `Premiär datum: ${movie.releaseDate}` }));
+    // });
 };
 
-document.addEventListener('DOMContentLoaded', initApp); 
+document.addEventListener('DOMContentLoaded', initApp);;

@@ -6,6 +6,7 @@ export default class MovieDetails extends Movie {
     super();
     this.backgroundImage = '';
     this.overview = '';
+    this.runtime = 0;
     this.genres = [];
   }
 
@@ -20,7 +21,8 @@ export default class MovieDetails extends Movie {
     movie.overview = data.overview;
     movie.poster = `${process.env.IMAGE_URL}/w500${data.poster_path}`;
     movie.releaseDate = data.release_date;
-    movie.grade = data.vote_average;
+    movie.rating = data.vote_average;
+    movie.runtime = data.runtime;
     data.genres.map((genre) => {
       movie.genres.push({ name: genre.name });
     });

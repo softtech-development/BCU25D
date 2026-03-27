@@ -2,7 +2,7 @@ import HttpClient from '../helpers/HttpClient';
 import { MediaResponse } from './media-response';
 
 export default class Media {
-    private _resource: string;
+    protected _resource: string;
     id: Number;
     title: string;
     language: string;

@@ -22,7 +22,17 @@ export default class HttpClient<T> implements IHttpClient<T> {
     }
 
     async find(id: number | string): Promise<T> {
-        throw new Error('Method not implemented.');
+        try {
+            const response = await fetch(`${this._url}/${id}`);
+
+            if (response.ok) {
+                return await response.json() as T;
+            } else {
+                throw new Error(response.statusText);
+            }
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
     }
 
-}
+};
