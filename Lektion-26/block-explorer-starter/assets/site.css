@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,200;1,400;1,500;1,600&display=swap');
+
+@import url('./navigation.css');
+
+:root {
+  --primary-color: #1a237e;
+  --secondary-color: #2196f3;
+  --primary-text-color: #333;
+  --secondary-text-color: #f4f4f4;
+  --background-color: #f4f4f4;
+  --nav-background-color: #1a237e;
+  --nav-text-color: #f4f4f4;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+main {
+  padding: 1rem;
+  max-width: 1024px;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+h4 {
+  padding-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: solid 1px #333;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.section div {
+  margin-right: 1rem;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0.3rem 0;
+  color: var(--secondary-text-color);
+  background: var(--primary-color);
+  border: solid 1px var(--secondary-color);
+  line-height: 1.2;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  outline: none !important;
+  cursor: pointer;
+  transition: background 0.5s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--secondary-color);
+  border: solid 1px var(--primary-color);
+}
+
+.btn-rounded {
+  border-radius: 3rem;
+}
+
+#transaction-form {
+  max-width: 400px;
+  margin: auto;
+}
+
+#transaction-form .form-control {
+  margin-bottom: 1rem;
+}
+
+#transaction-form .form-control label {
+  display: block;
+}
+
+#transaction-form .form-control input {
+  width: 100%;
+  padding: 0.65rem;
+  border: solid 1px #ddd;
+  border-radius: 0.2rem;
+}
+
+#transaction-form input:focus {
+  outline: none !important;
+  border: solid 1px #ef6c00;
+}
