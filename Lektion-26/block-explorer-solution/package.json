@@ -1,0 +1,17 @@
+{
+  "name": "block-explorer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "viem": "^2.47.6",
+    "vite": "^8.0.3"
+  }
+}
