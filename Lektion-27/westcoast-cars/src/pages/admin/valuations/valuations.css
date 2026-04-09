@@ -1,0 +1,47 @@
+@import '../../../assets/site.css';
+@import '../../../assets/navbar.css';
+@import '../../../assets/colors.css';
+@import '../../../assets/utilities.css';
+@import '../../../assets/form.css';
+@import '../../../assets/spinner.css';
+
+.admin-list {
+  display: none;
+  margin: 0 auto;
+  width: 992px;
+  background-color: var(--background-light);
+  border: solid 2px var(--primary-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.admin-list.show {
+  display: block;
+}
+
+.admin-list section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: solid 1px navy;
+}
+
+.admin-list section div {
+  width: 100%;
+  padding: 0.2rem 0;
+}
+
+.admin-list section div:last-child {
+  max-width: 50px;
+  text-align: right;
+}
+
+.admin-list section div:nth-child(3) {
+  max-width: 200px;
+}
+
+.admin-list section div:nth-child(4) {
+  max-width: 100px;
+}

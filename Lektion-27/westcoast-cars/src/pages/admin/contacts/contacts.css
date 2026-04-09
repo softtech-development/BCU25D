@@ -1,0 +1,42 @@
+@import '../../../assets/site.css';
+@import '../../../assets/navbar.css';
+@import '../../../assets/colors.css';
+@import '../../../assets/utilities.css';
+@import '../../../assets/form.css';
+@import '../../../assets/spinner.css';
+
+.posts-list {
+  display: none;
+  margin: 0 auto;
+  width: 992px;
+  background-color: var(--background-light);
+  border: solid 2px var(--primary-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.posts-list.show {
+  display: block;
+}
+
+.posts-list section i {
+  cursor: pointer;
+}
+
+.posts-list section i:hover {
+  color: var(--text-color-active);
+}
+
+.posts-list section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: solid 1px navy;
+}
+
+.posts-list section div {
+  width: 100%;
+  padding: 0.2rem 0;
+}
