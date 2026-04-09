@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vehicles.css" />
+    <script
+      src="https://kit.fontawesome.com/55174c58a9.js"
+      crossorigin="anonymous"></script>
+    <script type="module" src="./vehicles.ts"></script>
+    <title>Hantera bilar i lager</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+          <ul class="menu">
+            <li class="logo">
+              <a class="sub-title" href="../../../../index.html"
+                ><span><i class="fa-solid fa-cars"></i></span> Westcoast Cars</a
+              >
+            </li>
+            <li class="toggle">
+              <input class="menu-btn" type="checkbox" id="menu-btn" />
+              <label class="menu-icon" for="menu-btn"
+                ><span class="nav-icon"></span>
+              </label>
+            </li>
+            <li class="menu-item">
+              <a class="active" href="../vehicles/vehicles.html"
+                >Hantera bilar</a
+              >
+            </li>
+            <li class="menu-item">
+              <a href="../valuations/valuations.html">Bilar att värdera</a>
+            </li>
+            <li class="menu-item">
+              <a href="./vehicle-add.html">Ny bil</a>
+            </li>
+            <li class="menu-item">
+              <a href="../contacts/contacts.html">Kontakter</a>
+            </li>
+            <li class="menu-item">
+              <a href="../../../../index.html"
+                ><i class="fa-regular fa-arrow-right-from-bracket"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1 class="page-title center mt-3 mb-3 center-text">Hantera bilar</h1>
+      <div class="spinner">
+        <span id="spinner"></span>
+      </div>
+      <div class="container">
+        <article id="vehicles"></article>
+      </div>
+    </main>
+    <section id="overlay" class="overlay"></section>
+    <section id="modal" class="form modal">
+      <h1 class="center-text">Ändra uppgifter</h1>
+      <form>
+        <div class="form-control">
+          <label for="manufacturer">Bilmärke</label>
+          <input type="text" name="manufacturer" id="manufacturer" />
+        </div>
+        <div class="form-control">
+          <label for="model">Modell</label>
+          <input type="text" name="model" id="model" />
+        </div>
+        <div class="form-control">
+          <label for="modelYear">Årsmodell</label>
+          <input type="number" name="modelYear" id="modelYear" />
+        </div>
+        <div class="form-control">
+          <label for="mileage">Antal körda km</label>
+          <input type="number" name="mileage" id="mileage" />
+        </div>
+        <div class="form-control">
+          <label for="value">Pris</label>
+          <input type="number" name="value" id="value" />
+        </div>
+        <div class="buttons">
+          <button id="closeModal" class="btn" type="button">Avbryt</button>
+          <button class="btn" type="submit">Spara</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
